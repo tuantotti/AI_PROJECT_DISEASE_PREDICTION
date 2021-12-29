@@ -839,7 +839,18 @@ const app = {
     };
 
     buttonContinueSymptons.onclick = () => {
-      setTimeout(5000)
+      if(resultArr.length == 0) {
+        alert("Please choose your symptoms")
+      } else {
+        resultPage.style.display = "block";
+        symptonPage.style.display = "none";
+        navbarResult.classList.add("navbar-info__item--checked");
+        var timeout = setTimeout(() => {
+          document.querySelector(".circle").style.display = "none";
+          document.querySelector(".result-page__element").style.display = "flex";
+          app.renderResult();
+        }, 3500)
+      }
       
       var dict = []
       for(let i=0;i<resultArr.length;i++){
@@ -879,10 +890,11 @@ const app = {
     }
 
     resultPre.onclick = () => {
-      check=false
       symptonPage.style.display = "block";
       resultPage.style.display = "none";
       navbarResult.classList.remove("navbar-info__item--checked");
+      document.querySelector(".circle").style.display = "block";
+      document.querySelector(".result-page__element").style.display = "none";
     };
   },
   checkContinueInfoPage() {
@@ -939,6 +951,21 @@ const app = {
                     `;
     }
     document.querySelector(".symptons-page__list").innerHTML = html;
+  },
+
+  renderResult() {
+    var htmls = resultArr.map(function (sympton) {
+      return `
+        <li class="result-page__symptom result-page__symptom--active">
+          <div class="result-page__symptom-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="result-page__symptom-text">${sympton}</span>
+        </li>
+      `;
+    });
+    var html = htmls.join("");
+    document.querySelector(".result-page__symptom-list").innerHTML = html;
   },
   start() {
     this.handleEvents();
