@@ -665,7 +665,6 @@ const symptons = [
     title: "Yellow Crust Ooze",
     trieuChung: "yellow_crustoze",
   },
-  
 ];
 const seeAdditionalInfo = document.querySelector(".info-page__hide-text");
 const hideAdditionalInfo = document.querySelector(".fa-chevron-up");
@@ -682,13 +681,15 @@ const symptonPre = document.querySelector(".symptons-pre");
 const symptonInput = document.querySelector(".symptons-page__input");
 const resultArr = [];
 const resultNameArr = [];
-const buttonContinueSymptons = document.querySelector(".js-btn-continue-symptons");
+const buttonContinueSymptons = document.querySelector(
+  ".js-btn-continue-symptons"
+);
 const navbarResult = document.querySelector(".navbar-result");
 const resultPre = document.querySelector(".result-pre");
 const resultPage = document.querySelector(".result-page");
 const symptomResults = $$(".result-page__symptom");
 
-var check=true
+var check = true;
 
 const addResult = (id) => {
   count = 0;
@@ -696,20 +697,23 @@ const addResult = (id) => {
     count++;
     if (sympton.id == id) {
       document.querySelector(".sympton-page__added-img").style.display = "none";
-      document.querySelector(".sympton-page__added-text").style.display = "none";
-      document.querySelector(".sympton-page__added-title").style.display = "block";
+      document.querySelector(".sympton-page__added-text").style.display =
+        "none";
+      document.querySelector(".sympton-page__added-title").style.display =
+        "block";
       const checkResult = resultArr.some((result) => {
         // return result == sympton.title
         return result == sympton.trieuChung;
       });
       if (!checkResult) {
-        resultArr.push(sympton.title)
+        resultArr.push(sympton.title);
         // resultArr.push(sympton.trieuChung);
         resultNameArr.push(sympton.title);
-        $('.result-page__heading').text("Tên bệnh")
-        $('.result-page__description').text("Độ chính xác")
-        
-        check=true
+        $(".result-page__heading").text("Disease Name");
+        $(".result-page__description").text("Accuracy");
+
+        check = true;
+        console.log(check + " in addResult");
       }
     }
   });
@@ -763,7 +767,8 @@ const deleteResult = (index) => {
   }
   document.querySelector(".sympton-page__list").innerHTML = html;
   if (resultArr.length == 0) {
-    document.querySelector(".sympton-page__added-img").style.display = "initial";
+    document.querySelector(".sympton-page__added-img").style.display =
+      "initial";
     document.querySelector(".sympton-page__added-text").style.display = "block";
     document.querySelector(".sympton-page__added-title").style.display = "none";
   }
@@ -839,38 +844,49 @@ const app = {
     };
 
     buttonContinueSymptons.onclick = () => {
-      if(resultArr.length == 0) {
-        alert("Please choose your symptoms")
-      } else {
+      console.log(check + " in buttonContinueSymptons");
+      // if (resultArr.length == 0) {
+      //   alert("Please choose your symptoms");
+      // } else {
+      var dict = [];
+      for (let i = 0; i < resultArr.length; i++) {
+        dict.push({ name: resultArr[i] });
+      }
+
+      var jsonString = JSON.stringify(dict);
+      console.log(jsonString);
+      if (check == true) {
+        console.log(check);
+        $.ajax({
+          url: "",
+          type: "get",
+          data: { jsonString: jsonString },
+          success: function (response) {
+            $(".result-page__heading").append(" : " + response.disease);
+            $(".result-page__description").append(
+              " : " + response.accuracy + " %"
+            );
+          },
+        });
         resultPage.style.display = "block";
         symptonPage.style.display = "none";
         navbarResult.classList.add("navbar-info__item--checked");
         var timeout = setTimeout(() => {
           document.querySelector(".circle").style.display = "none";
-          document.querySelector(".result-page__element").style.display = "flex";
+          document.querySelector(".result-page__element").style.display =
+            "flex";
           app.renderResult();
-        }, 3500)
+        }, 3000);
+      } else {
+        resultPage.style.display = "block";
+        symptonPage.style.display = "none";
+        navbarResult.classList.add("navbar-info__item--checked");
+        document.querySelector(".circle").style.display = "none";
+        document.querySelector(".result-page__element").style.display = "flex";
+        app.renderResult();
       }
-      
-      var dict = []
-      for(let i=0;i<resultArr.length;i++){
-        dict.push({name:resultArr[i]})
-      }
-      // alert(typeof(JSON.stringify(dict)))
+      // }
 
-      var jsonString=JSON.stringify(dict)
-      console.log(jsonString)
-      if(check==true){
-        $.ajax({
-          url:'',
-          type:'get',
-          data:{jsonString:jsonString},
-          success: function(response){
-              $('.result-page__heading').append(' : '+ response.disease)
-              $('.result-page__description').append(' : '+ response.accuracy +' %' )
-          }
-      });
-      }
       navbarResult.classList.add("navbar-info__item--checked");
       symptonPage.style.display = "none";
       resultPage.style.display = "block";
@@ -890,6 +906,8 @@ const app = {
     }
 
     resultPre.onclick = () => {
+      check = false;
+      console.log(check);
       symptonPage.style.display = "block";
       resultPage.style.display = "none";
       navbarResult.classList.remove("navbar-info__item--checked");
@@ -902,12 +920,12 @@ const app = {
     const number = setInterval(() => {
       if (
         document.querySelector(".info-page__check-age-input").value &&
-        (document.querySelector(".gender-button__male").classList.contains(
-          "gender-button--checked"
-        ) ||
-          document.querySelector(".gender-button__female").classList.contains(
-            "gender-button--checked"
-          ))
+        (document
+          .querySelector(".gender-button__male")
+          .classList.contains("gender-button--checked") ||
+          document
+            .querySelector(".gender-button__female")
+            .classList.contains("gender-button--checked"))
       ) {
         buttonContinueInfo.classList.add("btn-continue--valid");
         buttonContinueInfo.classList.remove("btn-continue--invalid");

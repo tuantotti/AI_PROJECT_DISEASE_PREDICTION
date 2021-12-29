@@ -5,12 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Disease Prediction</title>
+    <link rel="shortcut icon" href="{% static 'img/icon_web.png' %}" type="image/x-icon">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
-    <link rel="stylesheet" href="{% static 'css/test.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css"/>
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css" />
     <link
       href="{% static 'css/bootstrap.min.css' %}"
@@ -376,18 +377,18 @@
                 <div class="circle"></div>
                 <div class="result-page__element">
                   <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                       <div class="result-page__left">
                         <div class="result-page__icon">
                           <i class="fas fa-notes-medical"></i>
                         </div>
-                        <span class="result-page__text">Your chose</span>
+                        <span class="result-page__text">Your choose</span>
                       </div>
                     </div>
 
-                    <div class="col-lg-9">
+                    <div class="col-lg-8">
                       <div class="result-page__right">
-                        <h3 class="result-page__heading">Tên bệnh</h3>
+                        <h3 class="result-page__heading">Disease Name</h3>
                         <span class="result-page__description">Accuracy</span>
                         <ul class="result-page__symptom-list" style="padding-left: 0;">
                           
