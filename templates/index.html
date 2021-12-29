@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/test.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css" />
+    <link
+      href="{% static 'css/bootstrap.min.css' %}"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'fonts/fontawesome-free-5.15.3-web/css/all.min.css' %}"
+    />
+  </head>
+  <body>
+    <h1>{{disease}}</h1>
+    <h1>{{accuracy}}</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="main-container">
+            <div class="navbar-info">
+              <ul class="navbar-info__list">
+                <li class="navbar-info__item navbar-info__item--checked">
+                  <a href="#" class="navbar-info__item-text info-js">INFO</a>
+                </li>
+                <li class="navbar-info__item navbar-symptom">
+                  <a href="#" class="navbar-info__item-text symptom-js"
+                    >SYMPTOMS</a
+                  >
+                </li>
+                <li class="navbar-info__item navbar-result">
+                  <a href="#" class="navbar-info__item-text result-js"
+                    >RESULT</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="info-page">
+              <div class="info-page__heading">
+                <div class="info-page__logo">
+                  <img
+                    src="{% static 'img/logo_text.jpg' %}"
+                    alt="logo"
+                    class="info-page__logo-img"
+                  />
+                  <h1 class="info-page__logo-text">
+                    Symptom Checker
+                    <span>WITH BODY MAP</span>
+                  </h1>
+                </div>
+                <p class="info-page__heading-intro">
+                  Identify possible conditions and treatment related to your
+                  symptoms.
+                </p>
+              </div>
+              <div class="info-page__content">
+                <div class="info-page__additional-info">
+                  This tool does not provide medical advice.
+                  <span class="info-page__hide-text">
+                    See additional information
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                  <div class="info-page__show-text">
+                    <p class="addition-info">
+                      This tool is not intended to be a substitute for
+                      professional medical advice, diagnosis, or treatment.
+                      Always read the label before taking any over-the-counter
+                      (OTC) medications. The label identifies the active
+                      ingredient(s) and contains other important information
+                      including warnings about possible drug interactions and
+                      side effects. Always seek the advice of your physician or
+                      other qualified health provider with any questions you may
+                      have regarding a medical condition. Never disregard
+                      professional medical advice or delay in seeking it because
+                      of something you have read on WebMD! If you think you may
+                      have a medical emergency, call your doctor or 911
+                      immediately. WebMD does not recommend or endorse any
+                      specific products or services. Reliance on any information
+                      provided by WebMD is solely at your own risk.
+                      <i class="fas fa-chevron-up"></i>
+                    </p>
+                  </div>
+                </div>
+                <div class="info-page__check">
+                  <div class="info-page__check-age">
+                    <h3>Age</h3>
+                    <input type="text" class="info-page__check-age-input" />
+                  </div>
+                  <div class="info-page__check-gender">
+                    <span>Gender</span>
+                    <div class="gender-button">
+                      <button class="gender-button__male" value="male">
+                        Male
+                      </button>
+                      <button class="gender-button__female" value="female">
+                        Female
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="btn-continue">
+                  <!-- btn-continue--valid btn-continue--invalid -->
+                  <button class="btn-continue--invalid js-btn-continue-info">
+                    Continue
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="symptons-page">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="symptons-page__content">
+                    <h3 class="symptons-page__question">
+                      What are your symptoms?
+                    </h3>
+                    <div class="symptons-page__input-wrapper">
+                      <input
+                        type="text"
+                        class="symptons-page__input"
+                        placeholder="Type your main symptoms here"
+                      />
+                      <ul class="symptons-page__list">
+                        <!-- <li class="symptons-page__result">
+                            <h3 class="symptons-page__result-name">double vison</h3>
+                            <span class="symptons-page__result-add add-result-js">ADD</span>
+                          </li>
+                          <li class="symptons-page__result">
+                            <h3 class="symptons-page__result-name">double vison</h3>
+                            <span class="symptons-page__result-add">ADD</span>
+                          </li>
+                          <li class="symptons-page__result">
+                            <h3 class="symptons-page__result-name">double vison</h3>
+                            <span class="symptons-page__result-add">ADD</span>
+                          </li>
+                          <li class="symptons-page__result">
+                            <h3 class="symptons-page__result-name">double vison</h3>
+                            <span class="symptons-page__result-add">ADD</span>
+                          </li> -->
+                      </ul>
+                    </div>
+
+                    <div class="sympton-page__added">
+                      <div style="text-align: center; padding-bottom: 20px">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                          width="94"
+                          height="100"
+                          viewBox="0 0 94 100"
+                          class="sympton-page__added-img"
+                        >
+                          <defs>
+                            <path
+                              id="z"
+                              d="M10.258 7.143a6.73 6.73 0 0 1-.043-.76C10.215 2.859 12.953 0 16.331 0c3.378 0 6.116 2.858 6.116 6.384 0 .257-.015.51-.043.759h7.183c.78 0 1.413.647 1.413 1.412v7.033c0 .78-.62 1.412-1.413 1.412H1.413C.633 17 0 16.353 0 15.588V8.555c0-.78.62-1.412 1.413-1.412h8.845z"
+                            ></path>
+                            <path
+                              id="c"
+                              d="M1.352 9.852a1.352 1.352 0 0 1 0-2.704c3.196 0 5.796-2.6 5.796-5.796a1.352 1.352 0 0 1 2.704 0c0 3.196 2.6 5.796 5.796 5.796a1.352 1.352 0 0 1 0 2.704 5.802 5.802 0 0 0-5.796 5.796 1.352 1.352 0 0 1-2.704 0c0-3.196-2.6-5.796-5.796-5.796zM8.5 5.948A8.565 8.565 0 0 1 5.948 8.5 8.567 8.567 0 0 1 8.5 11.052 8.566 8.566 0 0 1 11.052 8.5 8.567 8.567 0 0 1 8.5 5.948z"
+                            ></path>
+                            <path
+                              id="e"
+                              d="M5 10c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5zm0-6.785c-.985 0-1.785.8-1.785 1.785 0 .985.8 1.786 1.785 1.786.985 0 1.785-.801 1.785-1.786 0-.984-.8-1.785-1.785-1.785z"
+                            ></path>
+                            <path
+                              id="g"
+                              d="M4 0c2.206 0 4 1.794 4 4S6.206 8 4 8 0 6.206 0 4s1.794-4 4-4zm0 5.428A1.43 1.43 0 0 0 5.428 4 1.43 1.43 0 0 0 4 2.572 1.43 1.43 0 0 0 2.572 4c0 .787.64 1.428 1.428 1.428z"
+                            ></path>
+                            <path
+                              id="i"
+                              d="M1.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                            ></path>
+                            <path
+                              id="k"
+                              d="M1.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                            ></path>
+                          </defs>
+                          <g fill="none" fill-rule="evenodd">
+                            <g stroke-linecap="round" stroke-linejoin="round">
+                              <path
+                                stroke="#E0EAEC"
+                                stroke-width="3"
+                                d="M25.045 98h47.91C76.845 98 80 94.857 80 90.98V32.02c0-3.877-3.154-7.02-7.045-7.02h-47.91C21.155 25 18 28.143 18 32.02v58.96c0 3.877 3.154 7.02 7.045 7.02z"
+                              ></path>
+                              <path
+                                stroke="#E0EAEC"
+                                stroke-width="2"
+                                d="M44.773 47.462h22.545M44.773 62.904h21.136M44.773 78.346h22.545"
+                              ></path>
+                              <path
+                                stroke="#C1DEDA"
+                                stroke-width="1.5"
+                                d="M27.864 44.654l7.045 7.02M27.864 51.673l7.045-7.02M27.864 63.837l2.116 1.875 6.338-5.616M27.864 77.875l2.116 1.875 6.338-5.615"
+                              ></path>
+                            </g>
+                            <g transform="translate(34 14)">
+                              <mask id="b" fill="#fff">
+                                <use xlink:href="#z"></use>
+                              </mask>
+                              <path
+                                fill="#E0EAEC"
+                                d="M-7.045 24.083h45.09V-7.083h-45.09z"
+                                mask="url(#b)"
+                              ></path>
+                            </g>
+                            <g transform="translate(69 3)">
+                              <mask id="d" fill="#fff">
+                                <use xlink:href="#c"></use>
+                              </mask>
+                              <path
+                                fill="#E0EAEC"
+                                d="M-7.083 24.083h31.166V-7.083H-7.083z"
+                                mask="url(#d)"
+                              ></path>
+                            </g>
+                            <g transform="translate(84 20)">
+                              <mask id="f" fill="#fff">
+                                <use xlink:href="#e"></use>
+                              </mask>
+                              <path
+                                fill="#C1DEDA"
+                                d="M-7.143 17.143h24.286V-7.143H-7.143z"
+                                mask="url(#f)"
+                              ></path>
+                            </g>
+                            <g transform="translate(1 88)">
+                              <mask id="h" fill="#fff">
+                                <use xlink:href="#g"></use>
+                              </mask>
+                              <path
+                                fill="#E0EAEC"
+                                d="M-6.667 14.667h21.334V-6.667H-6.667z"
+                                mask="url(#h)"
+                              ></path>
+                            </g>
+                            <g transform="translate(0 81)">
+                              <mask id="j" fill="#fff">
+                                <use xlink:href="#i"></use>
+                              </mask>
+                              <path
+                                fill="#C1DEDA"
+                                d="M-7.5 10.5h18v-18h-18z"
+                                mask="url(#j)"
+                              ></path>
+                            </g>
+                            <g transform="translate(87)">
+                              <mask id="l" fill="#fff">
+                                <use xlink:href="#k"></use>
+                              </mask>
+                              <path
+                                fill="#C1DEDA"
+                                d="M-7.5 10.5h18v-18h-18z"
+                                mask="url(#l)"
+                              ></path>
+                            </g>
+                          </g>
+                        </svg>
+                        <h3 class="sympton-page__added-text">
+                          No symptoms added
+                        </h3>
+                      </div>
+                      <h3 class="sympton-page__added-title">My Symptoms</h3>
+                      <ul class="sympton-page__list">
+                        <!-- <li class="sympton-page__item">
+                          <div class="sympton-page__group">
+                            <span class="sympton-page__text">double vision</span>
+                            <span class="sympton-page__icon"><i class="fas fa-trash"></i></span>
+                          </div>
+                        </li>
+                        <li class="sympton-page__item">
+                          <div class="sympton-page__group">
+                            <span class="sympton-page__text">double vision</span>
+                            <span class="sympton-page__icon"><i class="fas fa-trash"></i></span>
+                          </div>
+                        </li>
+                        <li class="sympton-page__item">
+                          <div class="sympton-page__group">
+                            <span class="sympton-page__text">double vision</span>
+                            <span class="sympton-page__icon"><i class="fas fa-trash"></i></span>
+                          </div>
+                        </li>
+                        <li class="sympton-page__item">
+                          <div class="sympton-page__group">
+                            <span class="sympton-page__text">double vision</span>
+                            <span class="sympton-page__icon"><i class="fas fa-trash"></i></span>
+                          </div>
+                        </li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="body-img__male">
+                    <svg
+                      id="full-body"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 310 385"
+                      xml:space="preserve"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                      <image
+                        xlink:href="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/symptom_checker_beta/assets/front-m.png"
+                        height="100%"
+                        width="100%"
+                        x="0"
+                        y="0"
+                        class="body-bg-img"
+                      ></image>
+                    </svg>
+                  </div>
+                  <div class="body-img__female">
+                    <svg
+                      id="full-body"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 310 385"
+                      xml:space="preserve"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                      <image
+                        xlink:href="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/symptom_checker_beta/assets/front-f.png"
+                        height="100%"
+                        width="100%"
+                        x="0"
+                        y="0"
+                        class="body-bg-img"
+                      ></image>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="symptons-page__direct">
+                    <div class="btn-previous symptons-pre">
+                      <button class="btn-previous__valid">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                      </button>
+                    </div>
+
+                    <div class="btn-continue symptons-next">
+                      <!-- btn-continue--valid btn-continue--invalid -->
+                      <button
+                        class="btn-continue--valid js-btn-continue-symptons"
+                      >
+                        Continue
+                        <i class="fas fa-chevron-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="result-page">
+              <div class="container">
+                <div class="result-page__element">
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <div class="result-page__left">
+                        <div class="result-page__icon">
+                          <i class="fas fa-notes-medical"></i>
+                        </div>
+                        <span class="result-page__text">Your choose</span>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-9">
+                      <div class="result-page__right">
+                        <h3 class="result-page__heading">Disease Name </h3>
+                        <span class="result-page__description">Accuracy </span>
+
+                        <div class="result-page__symptom">
+                          <div class="result-page__symptom-icon">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <span class="result-page__symptom-text"
+                            >Skin rash</span
+                          >
+                        </div>
+                        <div class="result-page__symptom">
+                          <div class="result-page__symptom-icon">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <span class="result-page__symptom-text"
+                            >Nodal skin eruptions</span
+                          >
+                        </div>
+                        <div class="result-page__symptom">
+                          <div class="result-page__symptom-icon">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <span class="result-page__symptom-text">Itching</span>
+                        </div>
+                        <div class="result-page__symptom">
+                          <div class="result-page__symptom-icon">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <span class="result-page__symptom-text"
+                            >Continuous sneezing</span
+                          >
+                        </div>
+                        <div class="result-page__symptom">
+                          <div class="result-page__symptom-icon">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <span class="result-page__symptom-text"
+                            >Shivering chills</span
+                          >
+                        </div>
+                        <div class="result-page__symptom">
+                          <div class="result-page__symptom-icon">
+                            <i class="fas fa-check"></i>
+                          </div>
+                          <span class="result-page__symptom-text"
+                            >Joint pain</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12">
+                    <div class="result-page__direct result-pre">
+                      <button class="btn-previous__valid">
+                        <i class="fas fa-chevron-left"></i>
+                        Previous
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="{% static 'js/bootstrap.bundle.min.js'%}"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    
+  </body>
+</html>

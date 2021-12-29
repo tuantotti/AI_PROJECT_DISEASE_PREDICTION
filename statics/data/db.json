@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "title": "Itching",
+        "trieuChung": "itching"
+    },
+    {
+        "id": 2,
+        "title": "Skin rash",
+        "trieuChung": "skin_rash"
+    },
+    {
+        "id": 3,
+        "title": "Nodal skin eruptions",
+        "trieuChung": "nodal_skin_eruptions"
+    },
+    {
+        "id": 4,
+        "title": "Continuous sneezing",
+        "trieuChung": "continuous_sneezing"
+    },
+    {
+        "id": 5,
+        "title": "Shivering",
+        "trieuChung": "shivering"
+    },
+    {
+        "id": 6,
+        "title": "Chills",
+        "trieuChung": "chills"
+    },
+    {
+        "id": 7,
+        "title": "Joint pain",
+        "trieuChung": "joint_pain"
+    },
+    {
+        "id": 8,
+        "title": "Stomach pain",
+        "trieuChung": "stomach_pain"
+    },
+    {
+        "id": 9,
+        "title": "Acidity",
+        "trieuChung": "acidity"
+    },
+    {
+        "id": 10,
+        "title": "Ulcers on tongue",
+        "trieuChung": "ulcers_on_tongue"
+    },
+    {
+        "id": 11,
+        "title": "Muscle wasting",
+        "trieuChung": "muscle_wasting"
+    },
+    {
+        "id": 12,
+        "title": "Vomiting",
+        "trieuChung": "vomiting"
+    },
+    {
+        "id": 13,
+        "title": "Burning micturition",
+        "trieuChung": "burning_micturition"
+    },
+    {
+        "id": 14,
+        "title": "Spotting urination",
+        "trieuChung": "spotting_urination"
+    },
+    {
+        "id": 15,
+        "title": "Fatigue",
+        "trieuChung": "Fatigue"
+    },
+    {
+        "id": 16,
+        "title": "Weight gain",
+        "trieuChung": "weight_gain"
+    },
+    {
+        "id": 17,
+        "title": "Anxiety",
+        "trieuChung": "anxiety"
+    },
+    {
+        "id": 18,
+        "title": "Cold hands and feets",
+        "trieuChung": "cold_hands_and_feets"
+    },
+    {
+        "id": 19,
+        "title": "Mood swings",
+        "trieuChung": "mood_swings"
+    },
+    {
+        "id": 20,
+        "title": "Weight loss",
+        "trieuChung": "weight_loss"
+    }
+]

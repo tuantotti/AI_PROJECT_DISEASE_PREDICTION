@@ -1,0 +1,81 @@
+@media (max-width: 992px) {
+    .navbar-info {
+        display: none
+    }
+
+    .addition-info {
+        margin: 0 100px;
+    }
+
+    .info-page {
+        background-size: contain;
+    }
+
+    .symptons-page__question {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .symptons-page__content {
+        margin: 58px 30px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .addition-info {
+        margin: 0 70px;
+    }
+
+    .info-page__check {
+        display: block;
+    }
+
+    .info-page__check-age {
+        text-align: center;
+        margin: 0;
+    }
+
+    .gender-button {
+        text-align: center;
+    }
+    .info-page__logo {
+        display: block;
+    }
+
+    .info-page__check-gender {
+        margin-top: 16px;
+    }
+
+    
+}
+
+@media (max-width: 575px) {
+    .info-page__logo-text > span {
+        display: block;
+    }
+
+    .info-page__hide-text {
+        display: block;
+    }
+
+    .symptons-page__input {
+        font-size: 14px;
+        padding: 16.5px 10px 16.5px 10px;
+    }
+
+    .btn-previous__valid {
+        padding: 10px 24px 10px 14px;
+    }
+
+    .fa-chevron-left {
+        margin-right: 10px;
+    }
+
+    .symptons-next .btn-continue--valid {
+        padding: 10px 14px 10px 24px;
+    }
+
+    .symptons-next .fa-chevron-right {
+        margin-left: 10px;
+    }
+}
