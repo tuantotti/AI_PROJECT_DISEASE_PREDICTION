@@ -2,7 +2,9 @@
 
 IDE : visual code 
 
-Install Python : in this project use python 3.9.5 (link : https://www.python.org/downloads/windows/)
+Install Python : 
+          
+          in this project use python 3.9.5 (link : https://www.python.org/downloads/windows/)
 
 Install virtualenv (OPTIONAL) : pip install virtualenv
 
@@ -10,6 +12,10 @@ Install virtualenv (OPTIONAL) : pip install virtualenv
                     virtualenv env
                     env\Scripts\activate 
     
-Install Django : pip install django 
+Install Django : 
+          
+          pip install django 
 
-Run Project : python manager.py runserver 
+Run Project : 
+          
+          python manager.py runserver 
