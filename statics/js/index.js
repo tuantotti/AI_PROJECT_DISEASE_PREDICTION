@@ -843,7 +843,8 @@ const app = {
     };
 
     buttonContinueSymptons.onclick = () => {
-      console.log(check + " in buttonContinueSymptons");
+      // console.log(check + " in buttonContinueSymptons");
+      
       if (resultArr.length == 0) {
         alert("Please choose your symptoms");
       } else {
@@ -853,17 +854,18 @@ const app = {
         }
 
         var jsonString = JSON.stringify(dict);
-        console.log(jsonString);
+        // console.log(jsonString);
         if (check == true) {
           // console.log(check);
           $.ajax({
-            url: "",
-            type: "get",
+            url: '',
+            type: 'GET',
             data: { jsonString: jsonString },
             success: function (response) {
               $(".result-page__heading").append(" : " + response.disease);
               $(".result-page__description").append(
                 " : " + response.accuracy + " %"
+
               );
             },
           });

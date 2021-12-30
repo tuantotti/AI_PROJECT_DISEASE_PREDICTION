@@ -34,13 +34,13 @@ class AjaxHandlerView(View):
                 symptom = " ".join([i.capitalize() for i in item['name'].split(" ")])
                 symptoms.append(symptom)
 
-            # print(symptoms)
+            print("Input : "+str(symptoms))
 
             disease,accuracy=run(symptoms)
             print(disease)
             print(accuracy)
             context={'disease':disease,'accuracy':accuracy}
-            return JsonResponse(context,status=200)
+            return JsonResponse(context)
         
         # symptoms=['Itching','Skin Rash','Stomach Pain','Burning Micturition']
         
