@@ -713,7 +713,6 @@ const addResult = (id) => {
         $(".result-page__description").text("Accuracy");
 
         check = true;
-        console.log(check + " in addResult");
       }
     }
   });
@@ -845,47 +844,48 @@ const app = {
 
     buttonContinueSymptons.onclick = () => {
       console.log(check + " in buttonContinueSymptons");
-      // if (resultArr.length == 0) {
-      //   alert("Please choose your symptoms");
-      // } else {
-      var dict = [];
-      for (let i = 0; i < resultArr.length; i++) {
-        dict.push({ name: resultArr[i] });
-      }
+      if (resultArr.length == 0) {
+        alert("Please choose your symptoms");
+      } else {
+        var dict = [];
+        for (let i = 0; i < resultArr.length; i++) {
+          dict.push({ name: resultArr[i] });
+        }
 
-      var jsonString = JSON.stringify(dict);
-      console.log(jsonString);
-      if (check == true) {
-        console.log(check);
-        $.ajax({
-          url: "",
-          type: "get",
-          data: { jsonString: jsonString },
-          success: function (response) {
-            $(".result-page__heading").append(" : " + response.disease);
-            $(".result-page__description").append(
-              " : " + response.accuracy + " %"
-            );
-          },
-        });
-        resultPage.style.display = "block";
-        symptonPage.style.display = "none";
-        navbarResult.classList.add("navbar-info__item--checked");
-        var timeout = setTimeout(() => {
+        var jsonString = JSON.stringify(dict);
+        console.log(jsonString);
+        if (check == true) {
+          // console.log(check);
+          $.ajax({
+            url: "",
+            type: "get",
+            data: { jsonString: jsonString },
+            success: function (response) {
+              $(".result-page__heading").append(" : " + response.disease);
+              $(".result-page__description").append(
+                " : " + response.accuracy + " %"
+              );
+            },
+          });
+          resultPage.style.display = "block";
+          symptonPage.style.display = "none";
+          navbarResult.classList.add("navbar-info__item--checked");
+          var timeout = setTimeout(() => {
+            document.querySelector(".circle").style.display = "none";
+            document.querySelector(".result-page__element").style.display =
+              "flex";
+            app.renderResult();
+          }, 4000);
+        } else {
+          resultPage.style.display = "block";
+          symptonPage.style.display = "none";
+          navbarResult.classList.add("navbar-info__item--checked");
           document.querySelector(".circle").style.display = "none";
           document.querySelector(".result-page__element").style.display =
             "flex";
           app.renderResult();
-        }, 3000);
-      } else {
-        resultPage.style.display = "block";
-        symptonPage.style.display = "none";
-        navbarResult.classList.add("navbar-info__item--checked");
-        document.querySelector(".circle").style.display = "none";
-        document.querySelector(".result-page__element").style.display = "flex";
-        app.renderResult();
+        }
       }
-      // }
 
       navbarResult.classList.add("navbar-info__item--checked");
       symptonPage.style.display = "none";

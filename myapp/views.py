@@ -26,13 +26,12 @@ class AjaxHandlerView(View):
             print(resultArr)
             
             jsonA=json.loads(resultArr)
-            for item in jsonA:
-                print(item['name'])
+            # for item in jsonA:
+            #     print(item['name'])
             symptoms=[]
 
             for item in jsonA:
                 symptom = " ".join([i.capitalize() for i in item['name'].split(" ")])
-                print(type(symptom))
                 symptoms.append(symptom)
 
             # print(symptoms)
