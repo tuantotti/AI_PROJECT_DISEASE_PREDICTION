@@ -842,9 +842,12 @@ const app = {
       // this.renderSymptons(e.target.value)
     };
 
+    // sự kiến ấn nút continue
+    // tác dụng: 
+    // + khi ấn continue: kiểm tra xem có symtoms nào đc add vào resultArr
+    //                    + có thì thực hiện tạo mảng object --> json --> gửi request (ajax) cho backend
+    //                    + không thì tạo alert("Please choose your symptoms") 
     buttonContinueSymptons.onclick = () => {
-      // console.log(check + " in buttonContinueSymptons");
-      
       if (resultArr.length == 0) {
         alert("Please choose your symptoms");
       } else {
@@ -854,9 +857,7 @@ const app = {
         }
 
         var jsonString = JSON.stringify(dict);
-        // console.log(jsonString);
         if (check == true) {
-          // console.log(check);
           $.ajax({
             url: '',
             type: 'GET',

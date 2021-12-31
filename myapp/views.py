@@ -15,12 +15,16 @@ from .disease_prediction import run
 import json
 
 class AjaxHandlerView(View):
+    # hàm check xem request ajax
     def is_ajax(self,request):
         return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
-    def get(self,request):
-        
 
-        # print(str(text)+"|")
+    # hàm xử lý khi có request ajax gửi đến
+    def get(self,request):
+        # If: request ajax thì thực hiện nhận dữ liệu 
+        # Sử dụng module disease_prediction với phương thức run --> return disease, accuracy 
+        #                                                       --> JsonResponse
+        # Else: trả về trang index.html
         if self.is_ajax(request):
             resultArr=request.GET.get('jsonString')
             print(resultArr)
@@ -28,26 +32,22 @@ class AjaxHandlerView(View):
             jsonA=json.loads(resultArr)
             # for item in jsonA:
             #     print(item['name'])
-            symptoms=[]
+
+            symptoms=[] # mảng chứa các symptom
 
             for item in jsonA:
                 symptom = " ".join([i.capitalize() for i in item['name'].split(" ")])
                 symptoms.append(symptom)
 
-            print("Input : "+str(symptoms))
-
             disease,accuracy=run(symptoms)
-            print(disease)
-            print(accuracy)
+
+            print("==================================================")
+            print("Input: "+ str(symptoms))
+            print("Disease: "+str(disease))
+            print("Accuracy: "+str(accuracy))
+            print("==================================================")
+
             context={'disease':disease,'accuracy':accuracy}
             return JsonResponse(context)
         
-        # symptoms=['Itching','Skin Rash','Stomach Pain','Burning Micturition']
-        
-
-        
-
-        # context={'disease':disease,'accuracy':accuracy}
-            
-        # return render(request,'index.html',context)
         return render(request,'index.html')

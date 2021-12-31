@@ -31,19 +31,19 @@ class naive_bayes_Gaussian:
         return math.sqrt(variance)
 
 
-    def gaussianProb(self,x, mean, standard_deviation): # tính xác suất hậu nghiệm theo công thức Gauss
+    def gaussian(self,x, mean, standard_deviation): # tính xác suất hậu nghiệm theo công thức Gauss
         exponent = math.exp(-(math.pow(x - mean, 2) /
                             (2 * math.pow(standard_deviation, 2))))
         return (1 / (math.sqrt(2 * math.pi) * standard_deviation)) * exponent
 
 
     # Hàm ước lượng xác suất khi độ lệch chuẩn = 0
-    def estimateProba(self,numY, numX, m):  # numX= n(ci,xj); numY=n(ci)
+    def estimate(self,numY, numX, m):  # numX= n(ci,xj); numY=n(ci)
         p = 1/float(numX)
 
-        estimateProba = (numX+m*p)/float(numY+m)
+        estimate = (numX+m*p)/float(numY+m)
 
-        return estimateProba
+        return estimate
         
     def calProbaPrior(self):
         probaPriorClass={}
@@ -95,9 +95,9 @@ class naive_bayes_Gaussian:
                 means, std = self.summarises[classValue][i]
                 x = input[i]
                 if(std != 0.0):
-                    probabilities[classValue] += math.log10(self.gaussianProb(x, means, std))
+                    probabilities[classValue] += math.log10(self.gaussian(x, means, std))
                 else:
-                    probabilities[classValue] += self.estimateProba(len(self.summarises[classValue]),10,10)
+                    probabilities[classValue] += self.estimate(len(self.summarises[classValue]),10,10)
             probabilities[classValue] +=math.log10(self.probaPriorClass[classValue])
 
         maxLabel = self.sortByProbab(probabilities)
@@ -106,8 +106,6 @@ class naive_bayes_Gaussian:
 
     # tương tự như predict nhưng input lúc này là tập các tên thuộc tính
     def predictDisease(self,symptoms):
-        # symptoms = symptoms.split(",") # chia thành mảng các symptom
-     
         input = [0] * len(self.data_dict["symptom_index"]) # tạo ra input với độ dài mảng tương ứng với số lượng thuộc tính (132)
         for symptom in symptoms:
             index = self.data_dict["symptom_index"][symptom]
@@ -130,7 +128,7 @@ class naive_bayes_Gaussian:
 
         return maxLabel
 
-    # thực hiện test - predict nhiều lần
+    # thực hiện test --> predict nhiều lần
     def predictTest(self,XTest):
         preds = []
 
@@ -140,7 +138,7 @@ class naive_bayes_Gaussian:
 
         return preds
     
-    # tính độ chính xác của mô hình - check preds với YTest sau đó tính độ chính xác (%)
+    # tính độ chính xác của mô hình --> check preds với YTest sau đó tính độ chính xác (%)
     def calAccuracy(self,preds, YTest):
         match = 0
 
@@ -195,9 +193,11 @@ def loadData(file_name):
 symptoms=['Itching','Skin Rash','Stomach Pain','Burning Micturition']
 
 def run(symptoms):
+    FILE_NAME='..\statics\data\data.csv'
     FILE_TRAINING_NAME='..\statics\data\Training.csv'
     FILE_TESTING_NAME='..\statics\data\Testing.csv'
 
+    # X_train, Y,data_dict = loadData(FILE_NAME)
     X_train, Y_train,data_dict = loadData(FILE_TRAINING_NAME)
     X_test, Y_test,a = loadData(FILE_TESTING_NAME)
 
