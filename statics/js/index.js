@@ -878,7 +878,7 @@ const app = {
             document.querySelector(".result-page__element").style.display =
               "flex";
             app.renderResult();
-          }, 4000);
+          }, 10000);
         } else {
           resultPage.style.display = "block";
           symptonPage.style.display = "none";
