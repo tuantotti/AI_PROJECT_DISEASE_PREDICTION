@@ -8,7 +8,7 @@ Install Python :
 
 Install virtualenv (OPTIONAL) : pip install virtualenv
 
-          Create a new virtual environment 
+          Create a new virtual environment :
                     virtualenv env
                     env\Scripts\activate 
     
