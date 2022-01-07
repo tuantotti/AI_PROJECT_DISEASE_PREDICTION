@@ -18,4 +18,4 @@ Install Django :
 
 Run Project : 
           
-          python manager.py runserver 
+          python manage.py runserver 
