@@ -1,22 +1,31 @@
 # AI_PROJECT_DISEASE_PREDICTION
 
-IDE : visual code 
+## INSTALL
 
-Install Python : 
+### IDE : visual code 
+
+### Install Python: 
           
           in this project use python 3.9.5 (link : https://www.python.org/downloads/windows/)
+### Install PIP:      
+          curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+          python get-pip.py
+### Install Python libraries:   
+          pip install wheel 
+          pip install pandas
+          pip install -U scikit-learn scipy matplotlib
 
-Install virtualenv (OPTIONAL) : pip install virtualenv
+### Install virtualenv (OPTIONAL) : pip install virtualenv
 
           Create a new virtual environment :
                     virtualenv env
                     env\Scripts\activate 
     
-Install Django : 
+### Install Django : 
           
           pip install django 
 
-### Demo : 
+## DEMO : 
 
 ### 1. Choose age and gender
 <img src="https://user-images.githubusercontent.com/75234453/148514145-a8940037-06ec-4f12-857c-9ddb37134d69.png" alt="Demo1" width="100%" />
